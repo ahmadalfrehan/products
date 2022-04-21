@@ -21,8 +21,8 @@ class ProductUI extends StatelessWidget {
       child: Builder(
         builder: (context) {
           ProductCubit.get(context).getItems(
-            Category: ProductCubit.get(context).catergory[0].toString(),
-          );
+          Category: ProductCubit.get(context).catergory[0].toString(),
+        );
           return BlocConsumer<ProductCubit, ProductStates>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -33,18 +33,15 @@ class ProductUI extends StatelessWidget {
                   titleSpacing: 0,
                   actions: [
                     MaterialButton(
-                      onPressed: () {
-                        ProductCubit.get(context).getGategories();
-                      },
-                      child: const Icon(Icons.notifications_none,
-                          color: Colors.white),
+                      onPressed: () {},
+                      child: const Icon(
+                        Icons.notifications_none,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                   title: MaterialButton(
-                    onPressed: () {
-                      ProductCubit.get(context)
-                          .getItems(Category: 'electronics');
-                    },
+                    onPressed: () {},
                     child: const Icon(Icons.menu, color: Colors.white),
                   ),
                 ),
@@ -63,12 +60,14 @@ class ProductUI extends StatelessWidget {
                               if (state is ProductGetCategoryLoadingState)
                                 const LinearProgressIndicator(),
                               Container(
-                                margin: const EdgeInsets.symmetric(vertical: 15),
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 15),
                                 height: 30,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount:
-                                      ProductCubit.get(context).catergory.length,
+                                  itemCount: ProductCubit.get(context)
+                                      .catergory
+                                      .length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
@@ -106,7 +105,7 @@ class ProductUI extends StatelessWidget {
                               Container(
                                 child: GridView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
@@ -142,7 +141,9 @@ class ProductUI extends StatelessWidget {
                                                   fit: BoxFit.contain,
                                                   height: 100,
                                                 ),
-                                               SizedBox(height: 5,),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
                                                 Expanded(
                                                   child: Text(
                                                     ProductCubit.get(context)
@@ -150,9 +151,11 @@ class ProductUI extends StatelessWidget {
                                                         .toString(),
                                                     style: const TextStyle(
                                                       color: Colors.white,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
@@ -160,13 +163,16 @@ class ProductUI extends StatelessWidget {
                                                   children: [
                                                     Text(
                                                       '\$' +
-                                                          ProductCubit.get(context)
-                                                              .Items[index]['price']
+                                                          ProductCubit.get(
+                                                                  context)
+                                                              .Items[index]
+                                                                  ['price']
                                                               .toString(),
                                                       style: const TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 20,
-                                                        fontWeight: FontWeight.bold,
+                                                        fontWeight:
+                                                            FontWeight.bold,
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -174,14 +180,15 @@ class ProductUI extends StatelessWidget {
                                                     ),
                                                     Text(
                                                       ProductCubit.get(context)
-                                                          .Items[index]['rating']
+                                                          .Items[index]
+                                                              ['rating']
                                                               ['count']
                                                           .toString(),
                                                       style: const TextStyle(
-                                                          color: Colors.white),
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                   ],
-
                                                 ),
                                               ],
                                             ),
@@ -209,7 +216,8 @@ class ProductUI extends StatelessWidget {
                                             ),
                                             elevation: 0,
                                           ),
-                                          alignment: AlignmentDirectional.topEnd,
+                                          alignment:
+                                              AlignmentDirectional.topEnd,
                                         ),
                                         Align(
                                           child: MaterialButton(

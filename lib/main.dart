@@ -1,8 +1,12 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:null_check_operator_used_on_null_value/login/login_screen.dart';
+import 'package:null_check_operator_used_on_null_value/router.dart';
 
 import 'package:rxdart/rxdart.dart';
+
+import 'main.dart';
+import 'main.dart';
 
 /// generate n-amount of fibonacci numbers
 ///
@@ -35,6 +39,7 @@ class IndexedPair {
   String toString() => '$index: $n2';
 }*/
 void main() {
+  Flurorouter.setupRouter();
   runApp(const MyApp());
 }
 
@@ -46,27 +51,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateRoute: router.generator,
+      title: 'Fluro Tutorial',
+      initialRoute: 'login',
+      onGenerateRoute: Flurorouter.router.generator,
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }

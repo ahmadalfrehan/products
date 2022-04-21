@@ -38,12 +38,7 @@ class LoginScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.status.toString()),
             ));
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>  ProductUI(),
-              ),
-            );
+            Navigator.pushReplacementNamed(context, 'home');
           }
           if(state is LoginSuccessState && state.status != 'success' ){
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -55,7 +50,8 @@ class LoginScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          print(size.width / 11);
+          print(size.width);
+          print(size.height);
           return Scaffold(
             key: Scaffoldkey,
             body: SafeArea(
@@ -64,19 +60,18 @@ class LoginScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(
                           left: 39,
                           top: 89,
-                          right: 171,
-                          //  bottom: size.height * 0.0654,
+                          right:size.width<=400?185 :171,
                         ),
                         child: Text(
                           "Login",
                           style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontStyle: FontStyle.normal,
-                            fontSize: 73,
+                            fontSize:size.width<=400? 40:70,
                             fontFamily: 'roboto',
                             color: Color(0xFF1d2226),
                           ),
@@ -195,7 +190,7 @@ class LoginScreen extends StatelessWidget {
                       MaterialButton(
                         padding: const EdgeInsets.only(
                           left: 227,
-                          right: 38,
+                         // right: 38,
                           top: 20,
                         ),
                         onPressed: () {},
