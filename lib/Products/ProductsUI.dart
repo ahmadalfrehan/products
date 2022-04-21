@@ -20,9 +20,6 @@ class ProductUI extends StatelessWidget {
         ..getGategories(),
       child: Builder(
         builder: (context) {
-          ProductCubit.get(context).getItems(
-          Category: ProductCubit.get(context).catergory[0].toString(),
-        );
           return BlocConsumer<ProductCubit, ProductStates>(
             listener: (context, state) {},
             builder: (context, state) {

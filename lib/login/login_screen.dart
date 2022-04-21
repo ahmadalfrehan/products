@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
             ));
             Navigator.pushReplacementNamed(context, 'home');
           }
-          if(state is LoginSuccessState && state.status != 'success' ){
+          if (state is LoginSuccessState && state.status != 'success') {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.status.toString()),
             ));
@@ -60,20 +60,20 @@ class LoginScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                       Padding(
+                      Padding(
                         padding: EdgeInsets.only(
                           left: 39,
                           top: 89,
-                          right:size.width<=400?185 :171,
+                          right: size.width <= 400 ? 185 : 171,
                         ),
                         child: Text(
                           "Login",
                           style: TextStyle(
-                            fontWeight: FontWeight.normal,
+                            fontWeight: FontWeight.w300,
                             fontStyle: FontStyle.normal,
-                            fontSize:size.width<=400? 40:70,
+                            fontSize: size.width <= 400 ? 40 : 70,
                             fontFamily: 'roboto',
-                            color: Color(0xFF1d2226),
+                            color: const Color(0xFF1d2226),
                           ),
                         ),
                       ),
@@ -102,12 +102,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         child: TextFormField(
                           decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.email),
+                            suffixIcon: const Icon(Icons.email_outlined),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(25.0),
                             ),
                             filled: true,
-                            labelText: 'Email',
+                            labelText: 'Email Address',
                           ),
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
@@ -128,7 +128,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         child: TextFormField(
                           decoration: InputDecoration(
-                            suffixIcon: GestureDetector(
+                          /*  suffixIcon: GestureDetector(
                                 onTap: () {
                                   isAbscure
                                       ? isAbscure = LoginCubit.get(context)
@@ -139,12 +139,13 @@ class LoginScreen extends StatelessWidget {
                                 child: isAbscure
                                     ? const Icon(Icons.visibility_off)
                                     : const Icon(Icons.visibility)),
-                            prefixIcon: const Icon(
-                              Icons.lock,
+                            */
+                            suffixIcon: const Icon(
+                              Icons.lock_outline,
                               // color: Colors.teal,
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(25.0),
                             ),
                             filled: true,
                             labelText: 'Password',
@@ -173,9 +174,11 @@ class LoginScreen extends StatelessWidget {
                           ),
                           minWidth: double.infinity,
                           onPressed: () {
-                            LoginCubit.get(context).userLogin(
-                                email: emailController.text,
-                                password: passController.text);
+                            if(formKey.currentState!.validate()) {
+                              LoginCubit.get(context).userLogin(
+                                  email: emailController.text,
+                                  password: passController.text);
+                            }
                           },
                           child: const Text(
                             "LOGIN",
@@ -190,7 +193,7 @@ class LoginScreen extends StatelessWidget {
                       MaterialButton(
                         padding: const EdgeInsets.only(
                           left: 227,
-                         // right: 38,
+                          // right: 38,
                           top: 20,
                         ),
                         onPressed: () {},
@@ -224,47 +227,32 @@ class LoginScreen extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Text(
-                              'G',
-                              style: TextStyle(
-                                  color: Color(0xFF1a1a1a),
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Image.asset('build/assets/G.jpg',
+                                height: 55, width: 55, scale: 5),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 25,
                           ),
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Text(
-                              'f',
-                              style: TextStyle(
-                                  color: Color(0xFF1a1a1a),
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Image.asset('build/assets/B.png',
+                                height: 55, width: 55, scale: 5),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 25,
                           ),
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Text(
-                              'T',
-                              style: TextStyle(
-                                  color: Color(0xFF1a1a1a),
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Image.asset('build/assets/L.png',
+                                height: 55, width: 55, scale: 5),
                           ),
                         ],
                       ),
                       const SizedBox(
-                        height: 81,
+                        height: 51,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
