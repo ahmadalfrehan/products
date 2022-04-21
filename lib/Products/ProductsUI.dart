@@ -42,11 +42,11 @@ class ProductUI extends StatelessWidget {
                     child: const Icon(Icons.menu, color: Colors.white),
                   ),
                 ),
+                backgroundColor:  const Color(0xFF333742),
                 body: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
                     Container(
-                      color: const Color(0xFF333742),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: SingleChildScrollView(

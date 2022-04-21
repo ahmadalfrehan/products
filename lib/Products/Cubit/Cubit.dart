@@ -29,7 +29,9 @@ class ProductCubit extends Cubit<ProductStates> {
       emit(ProductGetCategorySuccessState());
       print(value.toString());
       catergory = value.data;
+      getItems(Category: value.data[0]);
       print('the category is ' + catergory.toString());
+
     }).catchError((onError) {
       print(onError);
       emit(ProductGetCategoryErrorState());

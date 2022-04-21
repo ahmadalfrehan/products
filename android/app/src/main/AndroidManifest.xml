@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.null_check_operator_used_on_null_value">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="null_check_operator_used_on_null_value"
         android:name="${applicationName}"
